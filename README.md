@@ -7,5 +7,4 @@ This program has several functions that allow you to add all kinds of fractions:
 ### This program will be further refined
 
 #### Known errors in the program:
-<<<<<<< HEAD
-  *Fractions with negative values are not added, namely with the second fraction
+  * Fractions with negative values are not added, namely with the second fraction
