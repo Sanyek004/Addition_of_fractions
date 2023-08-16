@@ -54,18 +54,17 @@ int nod(int a, int b)
 {
 	// [Method of successive differences] - MSD
 	// FIX WITH A MINUS SIGN [-]
-	
 	while (a != b)
 	{
 		//cout << "Hello" << endl;
 		// Note: Problem with the second numerator (c)
 		if (abs(a) > abs(b))
 		{
-			a = a - b;
+			a = abs(a - b);
 		}
 		else
 		{
-			b = b - a;
+			b = abs(b - a);
 		}
 	}
 	return a;
@@ -131,12 +130,21 @@ string Adding_two_fractions(int a, int b, int c, int d)
 		denominators = b * d; // Общий знаменатель
 	}
 
-
-
 	// Reduce fractions using NOD
 	int commonDivisor = nod(numerators, denominators);
+	cout << "Common Divisor: " << commonDivisor << endl;
 
+	if (numerators > 0 || denominators > 0)
+	{
+		numerators = abs(numerators);
+		denominators = abs(denominators);
+		// Format the result as a string
+		s_numerators = to_string(numerators);
+		s_denominators = to_string(denominators);
+		s_result = " -" + s_numerators + "/" + s_denominators;
 
+		return s_result;
+	}
 
 	if (commonDivisor > 1)
 	{
