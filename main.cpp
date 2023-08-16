@@ -51,14 +51,13 @@ void input(double& a, double& b, double& c, double& d, char& ch, char& oper)
 
 int nod(int a, int b)
 {
-	// НОД [Метод последовательных разностей]
 	// [Method of successive differences] - MSD
 	// FIX WITH A MINUS SIGN [-]
 	
 	while (a != b)
 	{
 		cout << "Hello" << endl;
-		// Примечание: Проблема со вторым числителем (c)
+		// Note: Problem with the second numerator (c)
 		if (a > b)
 		{
 			a = a - b;
@@ -120,14 +119,13 @@ string Adding_two_fractions(int a, int b, int c, int d)
 	}
 	else if (b != d)
 	{
-		// ... Не вычисляется здесь НОК/НОД [1/6+2/9 показывает не точный тест]
 		
 
-		// Приводим дроби к общему знаменателю
+		// Bring the fractions to a common denominator
 		int Common_denominator1 = a * d;
 		int Common_denominator2 = c * b;
 
-		// Складываем числители
+		// Add the numerators
 		numerators = Common_denominator1 + Common_denominator2;
 		denominators = b * d; // Общий знаменатель
 
@@ -144,7 +142,7 @@ string Adding_two_fractions(int a, int b, int c, int d)
 	}
 
 
-	// Форматируем результат в виде строки
+	// Format the result as a string
 	s_numerators = to_string(numerators);
 	s_denominators = to_string(denominators);
 	s_result = s_numerators + "/" + s_denominators;
