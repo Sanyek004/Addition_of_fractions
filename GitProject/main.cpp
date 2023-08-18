@@ -9,23 +9,23 @@ double Decimal_fraction(double a, double b);
 double adding_fractions(double a, double b);
 int nod(int a, int b);
 
-//int gcd(int a, int b) {
-//	if (b == 0)
-//		return a;
-//	else
-//		return gcd(b, a % b);
-//}
-
 int main()
 {
 	double a;
 	double b;
-	double c;
+	double c ;
 	double d;
-	char ch = ' ';
-	char oper = ' ';
+	char ch = '/';
+	char oper = '+';
 
 	input(a, b, c, d, ch, oper);
+
+	if (b == 0 || d == 0)
+	{
+		cout << "It is forbidden to divide by zero! " << endl;
+		return -1;
+
+	}
 
 	double math1 = Decimal_fraction(a, b);
 	double math2 = Decimal_fraction(c, d);
@@ -44,28 +44,18 @@ int main()
 void input(double& a, double& b, double& c, double& d, char& ch, char& oper)
 {
 	cout << "Input:";
-	//while (ch != '/' && oper != '+')
-	//{
 		cin >> a >> ch >> b >> oper >> c >> ch >> d;
-	//}
 }
 
 int nod(int a, int b)
 {
 	// [Method of successive differences] - MSD
 	// FIX WITH A MINUS SIGN [-]
-	while (a != b)
+	while (b != 0)
 	{
-		//cout << "Hello" << endl;
-		// Note: Problem with the second numerator (c)
-		if (abs(a) > abs(b))
-		{
-			a = abs(a - b);
-		}
-		else
-		{
-			b = abs(b - a);
-		}
+		int temp = b;
+		b = a % b;
+		a = temp;
 	}
 	return a;
 }
@@ -78,14 +68,6 @@ string Adding_two_fractions(int a, int b, int c, int d)
 	string s_numerators;
 	string s_denominators;
 	string s_result;
-
-	if (b == 0 || d == 0)
-	{
-		cout << "It is forbidden to divide by zero! ";
-		s_result = "Underfined";
-		return s_result;
-
-	}
 
 	if (a == 0)
 	{
@@ -119,15 +101,13 @@ string Adding_two_fractions(int a, int b, int c, int d)
 	}
 	else if (b != d)
 	{
-		
-
 		// Bring the fractions to a common denominator
 		int Common_denominator1 = a * d;
 		int Common_denominator2 = c * b;
 
 		// Add the numerators
 		numerators = Common_denominator1 + Common_denominator2;
-		denominators = b * d; // Общий знаменатель
+		denominators = b * d; // Common denominator
 	}
 
 	// Reduce fractions using NOD
